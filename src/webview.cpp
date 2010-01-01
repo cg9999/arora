@@ -678,6 +678,14 @@ void WebView::mouseReleaseEvent(QMouseEvent *event)
     event->setAccepted(isAccepted);
 }
 
+void WebView::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    BrowserApplication::instance()->setEventMouseButtons(event->buttons());
+    BrowserApplication::instance()->setEventKeyboardModifiers(event->modifiers());
+
+    QWebView::mouseDoubleClickEvent(event);
+}
+
 void WebView::setStatusBarText(const QString &string)
 {
     m_statusBarText = string;
